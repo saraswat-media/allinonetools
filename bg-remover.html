@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Remover - Transparent Background Online Free</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <header class="bg-pink-600 text-white shadow-md">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left text-sm"></i> AllInOneTools
+            </a>
+            <span class="text-sm font-semibold bg-pink-700 px-3 py-1 rounded-full">Background Remover</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-extrabold text-gray-900">Background Remover</h1>
+            <p class="text-gray-600 mt-1">सफेद या सिंगल कलर बैकग्राउंड हटाकर तुरंत पारदर्शी PNG बनाएं</p>
+        </div>
+
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200">
+            <div id="dropZone" class="border-2 border-dashed border-pink-400 bg-pink-50/50 rounded-xl p-8 text-center cursor-pointer hover:bg-pink-50 transition">
+                <i class="fa-solid fa-wand-magic-sparkles text-4xl text-pink-500 mb-3"></i>
+                <p class="font-semibold text-gray-700">फोटो चुनें (सफेद या प्लेन बैकग्राउंड वाली फोटो)</p>
+                <input type="file" id="fileInput" accept="image/*" class="hidden">
+            </div>
+
+            <div id="controls" class="hidden mt-6 space-y-4">
+                <div class="flex justify-center p-4 bg-gray-100 rounded-lg">
+                    <canvas id="previewCanvas" class="max-h-64 rounded border"></canvas>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">कलर सहनशीलता (Tolerance): <span id="tolVal">30</span></label>
+                    <input type="range" id="tolerance" min="5" max="100" value="30" class="w-full accent-pink-600">
+                </div>
+
+                <button id="downloadPngBtn" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-lg shadow transition">
+                    <i class="fa-solid fa-download mr-1"></i> पारदर्शी PNG डाउनलोड करें
+                </button>
+            </div>
+        </div>
+
+        <!-- In-Tool Amazon Banner -->
+        <div class="mt-8 p-4 bg-pink-50 border border-pink-200 rounded-xl flex items-center justify-between">
+            <div>
+                <p class="text-xs text-pink-700 font-bold uppercase tracking-wider">Photo Gear</p>
+                <p class="text-sm font-semibold text-gray-800">Green Screen Backgrounds & Studio Lights for Photo Editing</p>
+            </div>
+            <a href="https://www.amazon.in/s?k=green+screen+background&tag=wwwfbcomrsara-21" target="_blank" rel="nofollow sponsored" 
+               class="bg-pink-600 text-white text-xs font-bold px-4 py-2 rounded-md hover:bg-pink-700 transition">
+                View on Amazon
+            </a>
+        </div>
+    </main>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const controls = document.getElementById('controls');
+        const previewCanvas = document.getElementById('previewCanvas');
+        const toleranceInput = document.getElementById('tolerance');
+        const tolVal = document.getElementById('tolVal');
+        const downloadPngBtn = document.getElementById('downloadPngBtn');
+
+        let rawImg = new Image();
+
+        dropZone.onclick = () => fileInput.click();
+
+        fileInput.onchange = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                rawImg.onload = () => {
+                    controls.classList.remove('hidden');
+                    processImage();
+                };
+                rawImg.src = ev.target.result;
+            };
+            reader.readAsDataURL(file);
+        };
+
+        toleranceInput.oninput = () => {
+            tolVal.innerText = toleranceInput.value;
+            processImage();
+        };
+
+        function processImage() {
+            previewCanvas.width = rawImg.width;
+            previewCanvas.height = rawImg.height;
+            const ctx = previewCanvas.getContext('2d');
+            ctx.drawImage(rawImg, 0, 0);
+
+            const imgData = ctx.getImageData(0, 0, previewCanvas.width, previewCanvas.height);
+            const d = imgData.data;
+            const bgR = d[0], bgG = d[1], bgB = d[2];
+            const tol = parseInt(toleranceInput.value);
+
+            for (let i = 0; i < d.length; i += 4) {
+                const diff = Math.abs(d[i] - bgR) + Math.abs(d[i+1] - bgG) + Math.abs(d[i+2] - bgB);
+                if (diff < tol * 3) {
+                    d[i + 3] = 0; // Alpha 0 (पारदर्शी)
+                }
+            }
+            ctx.putImageData(imgData, 0, 0);
+        }
+
+        downloadPngBtn.onclick = () => {
+            const link = document.createElement('a');
+            link.download = 'transparent_image.png';
+            link.href = previewCanvas.toDataURL('image/png');
+            link.click();
+        };
+    </script>
+</body>
+</html>
