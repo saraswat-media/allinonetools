@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All In One Tools - मुफ़्त, तेज़ और सुरक्षित ऑनलाइन टूल्स</title>
-    <meta name="description" content="PDF to Word, PDF Compressor, Photo Converter, Background Remover और दैनिक पंचांग - सभी टूल्स एक ही जगह।">
-    
-    <!-- Google Fonts: Plus Jakarta Sans & Yantramanav -->
+    <title>All In One Tools - Free Online PDF, Photo & Daily Tools</title>
+    <meta name="description" content="Free online tools - PDF to Word, Compress PDF, Photo Converter, Background Remover ane Aaj Ka Panchang. Fast, free ane secure tools.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Yantramanav:wght@500;700&display=swap" rel="stylesheet">
@@ -16,14 +16,16 @@
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
             --primary-light: #eff6ff;
+            --accent: #f59e0b;
             --dark: #0f172a;
             --slate: #334155;
             --muted: #64748b;
             --border: #e2e8f0;
             --bg: #f8fafc;
             --card-bg: #ffffff;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            --shadow-hover: 0 20px 30px -10px rgba(37, 99, 235, 0.18);
         }
 
         * {
@@ -33,13 +35,30 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', 'Yantramanav', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
             color: var(--slate);
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+        }
+
+        /* Top Bar */
+        .top-promo-bar {
+            background: linear-gradient(90deg, #1e293b, #0f172a);
+            color: #f8fafc;
+            text-align: center;
+            padding: 8px 16px;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        .top-promo-bar a {
+            color: var(--accent);
+            text-decoration: underline;
+            font-weight: 700;
+            margin-left: 6px;
         }
 
         /* Navbar */
@@ -53,66 +72,79 @@
             position: sticky;
             top: 0;
             z-index: 50;
+            box-shadow: var(--shadow-sm);
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
             color: var(--dark);
             font-size: 1.35rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
         }
 
         .brand-icon {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), #7c3aed);
             color: #fff;
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+            font-size: 1.3rem;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
         }
 
-        .nav-badge {
-            background: #dcfce7;
-            color: #15803d;
-            font-size: 0.8rem;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: var(--primary-light);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 700;
-            padding: 4px 10px;
+            padding: 8px 16px;
             border-radius: 9999px;
-            border: 1px solid #bbf7d0;
+            border: 1px solid #bfdbfe;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: #ffffff;
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 50px 20px 35px;
-            max-width: 800px;
+            padding: 50px 20px 30px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
-        .hero-tag {
+        .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: var(--primary-light);
-            color: var(--primary);
+            background: #fef3c7;
+            color: #b45309;
             font-size: 0.85rem;
             font-weight: 700;
             padding: 6px 14px;
             border-radius: 9999px;
             margin-bottom: 16px;
-            border: 1px solid #dbeafe;
+            border: 1px solid #fde68a;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 2.9rem);
+            font-size: clamp(2.2rem, 5vw, 3.1rem);
             color: var(--dark);
             font-weight: 800;
             line-height: 1.2;
@@ -121,7 +153,7 @@
         }
 
         .hero h1 span {
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            background: linear-gradient(135deg, var(--primary), #9333ea);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -129,11 +161,11 @@
         .hero p {
             font-size: 1.1rem;
             color: var(--muted);
-            max-width: 600px;
+            max-width: 620px;
             margin: 0 auto 28px;
         }
 
-        /* Search & Filters */
+        /* Search Bar */
         .search-container {
             max-width: 520px;
             margin: 0 auto 25px;
@@ -142,20 +174,20 @@
 
         .search-input {
             width: 100%;
-            padding: 14px 20px 14px 48px;
+            padding: 15px 20px 15px 48px;
             font-size: 1rem;
             border: 2px solid var(--border);
-            border-radius: 14px;
+            border-radius: 16px;
             outline: none;
             background: #fff;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
             font-family: inherit;
         }
 
         .search-input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
         }
 
         .search-icon {
@@ -163,16 +195,16 @@
             left: 18px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--muted);
             pointer-events: none;
         }
 
-        /* Filter Pills */
+        /* Filter Tabs */
         .filter-tabs {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
             margin-bottom: 35px;
         }
@@ -180,9 +212,9 @@
         .filter-btn {
             background: #ffffff;
             border: 1px solid var(--border);
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 9999px;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             font-weight: 600;
             color: var(--slate);
             cursor: pointer;
@@ -195,68 +227,79 @@
             border-color: var(--dark);
         }
 
-        /* Tools Grid */
+        /* Main Container */
         .container {
-            max-width: 1100px;
+            max-width: 1140px;
             margin: 0 auto;
             padding: 0 20px;
             flex: 1;
         }
 
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 22px;
-            margin-bottom: 50px;
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--dark);
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Tool Card */
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 45px;
+        }
+
+        /* Tool Card with Image */
         .tool-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
+            border-radius: 20px;
+            overflow: hidden;
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             box-shadow: var(--shadow);
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
-            overflow: hidden;
         }
 
         .tool-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
-            border-color: #cbd5e1;
+            border-color: #93c5fd;
         }
 
-        .tool-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
+        .card-img-wrapper {
+            width: 100%;
+            height: 155px;
+            overflow: hidden;
+            position: relative;
+            background: #e2e8f0;
         }
 
-        .tool-icon {
-            width: 54px;
-            height: 54px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.7rem;
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
         }
 
-        .icon-blue { background: #eff6ff; }
-        .icon-emerald { background: #ecfdf5; }
-        .icon-purple { background: #faf5ff; }
-        .icon-orange { background: #fff7ed; }
-        .icon-gold { background: #fffbeb; }
+        .tool-card:hover .card-img {
+            transform: scale(1.05);
+        }
 
-        .tool-badge {
+        .card-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(4px);
+            color: #ffffff;
             font-size: 0.75rem;
             font-weight: 700;
             padding: 4px 10px;
@@ -264,14 +307,23 @@
             text-transform: uppercase;
         }
 
-        .badge-popular { background: #fee2e2; color: #b91c1c; }
-        .badge-fast { background: #e0f2fe; color: #0284c7; }
-        .badge-new { background: #fef3c7; color: #b45309; }
+        .badge-hot { background: #dc2626; }
+        .badge-fast { background: #0284c7; }
+        .badge-ai { background: #7c3aed; }
+        .badge-gold { background: #d97706; }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+        }
 
         .tool-title {
             font-size: 1.22rem;
             color: var(--dark);
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 6px;
         }
 
@@ -279,61 +331,169 @@
             font-size: 0.92rem;
             color: var(--muted);
             line-height: 1.5;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
-        .tool-action {
+        .tool-btn {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.95rem;
-            font-weight: 700;
+            justify-content: space-between;
+            background: var(--primary-light);
             color: var(--primary);
-            transition: gap 0.2s;
+            font-weight: 700;
+            font-size: 0.92rem;
+            padding: 10px 16px;
+            border-radius: 12px;
+            transition: all 0.2s;
         }
 
-        .tool-card:hover .tool-action {
-            gap: 10px;
-            color: var(--primary-dark);
+        .tool-card:hover .tool-btn {
+            background: var(--primary);
+            color: #ffffff;
         }
 
-        /* Panchang Highlight Card */
-        .tool-card.card-featured {
+        /* Special Vedic Panchang Card */
+        .card-panchang {
             border: 2px solid #fde68a;
-            background: linear-gradient(180deg, #fffdfa 0%, #ffffff 100%);
+            background: linear-gradient(180deg, #fffdf8, #ffffff);
         }
 
-        /* Trust Banner */
+        .card-panchang .tool-btn {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .card-panchang:hover .tool-btn {
+            background: #d97706;
+            color: #ffffff;
+        }
+
+        /* ================= AMAZON & CASHKARO AFFILIATE SECTION ================= */
+        .affiliate-section {
+            margin: 20px 0 50px;
+        }
+
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .deal-card {
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid;
+        }
+
+        .deal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .deal-amazon {
+            background: linear-gradient(135deg, #fff9f0, #ffffff);
+            border-color: #fed7aa;
+        }
+
+        .deal-cashkaro {
+            background: linear-gradient(135deg, #f0f9ff, #ffffff);
+            border-color: #bae6fd;
+        }
+
+        .deal-banner-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .deal-content {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+        }
+
+        .deal-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            align-self: flex-start;
+            text-transform: uppercase;
+        }
+
+        .tag-amz { background: #232f3e; color: #ff9900; }
+        .tag-ck { background: #0284c7; color: #ffffff; }
+
+        .deal-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .deal-desc {
+            font-size: 0.94rem;
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .deal-btn {
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.98rem;
+            padding: 12px 20px;
+            border-radius: 12px;
+            color: #ffffff;
+            transition: all 0.2s;
+        }
+
+        .btn-amz { background: #f08804; }
+        .btn-amz:hover { background: #dd7a00; }
+
+        .btn-ck { background: #0284c7; }
+        .btn-ck:hover { background: #0369a1; }
+
+        /* Trust Section */
         .trust-section {
             background: #ffffff;
             border-top: 1px solid var(--border);
-            padding: 35px 20px;
+            padding: 40px 20px;
             margin-top: auto;
         }
 
         .trust-grid {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 25px;
             text-align: center;
         }
 
         .trust-item h4 {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--dark);
-            margin-top: 6px;
-            margin-bottom: 4px;
+            margin: 8px 0 4px;
         }
 
         .trust-item p {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--muted);
         }
 
         .trust-icon {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
 
         /* Footer */
@@ -341,164 +501,237 @@
             background: var(--dark);
             color: #94a3b8;
             text-align: center;
-            padding: 24px 20px;
+            padding: 26px 20px;
             font-size: 0.9rem;
         }
 
         footer a {
-            color: #e2e8f0;
+            color: #cbd5e1;
             text-decoration: none;
             font-weight: 600;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Top Promo Announcement Bar with your Amazon Affiliate Link -->
+    <div class="top-promo-bar">
+        ⚡ Amazon Special Offers: Electronics, Fashion ane Puja Samagri par upto 70% Discount! 
+        <a href="https://www.amazon.in?&linkCode=ll2&tag=wwwfbcomrsara-21&linkId=efa3d0ad5b2442686141f8e5f09d4cc2&ref_=as_li_ss_tl" target="_blank" rel="noopener nofollow sponsored">Ahiya Click Karo →</a>
+    </div>
+
+    <!-- Navigation Bar -->
     <nav>
         <a href="index.html" class="brand">
             <div class="brand-icon">⚡</div>
             <span>AllInOne<span style="color:var(--primary);">Tools</span></span>
         </a>
-        <span class="nav-badge">100% Free & Secure</span>
+        <div class="nav-links">
+            <a href="https://rameshsaraswat21.github.io/aaj-ka-panchang/" target="_blank" class="nav-btn">🪔 आज का पंचांग</a>
+        </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Header -->
     <section class="hero">
-        <div class="hero-tag">✨ स्मार्ट वेब यूटिलिटीज</div>
-        <h1>आपके सभी काम, <span>एक ही जगह</span></h1>
-        <p>तेज़, सुरक्षित और आसान ऑनलाइन टूल्स। बिना किसी सॉफ्टवेयर या रजिस्ट्रेशन के तुरंत उपयोग करें।</p>
+        <div class="hero-badge">✨ 100% Free, Secure & Fast Web Utilities</div>
+        <h1>તમારા બધા જ ઓનલાઇન કામ, <span>એક જ જગ્યાએ</span></h1>
+        <p>PDF convert karo, image optimize karo, background remove karo ane roznu panchang juo - koi software ke registration vagar.</p>
 
-        <!-- Search Bar -->
+        <!-- Live Search Input -->
         <div class="search-container">
             <span class="search-icon">🔍</span>
-            <input type="text" id="toolSearch" class="search-input" placeholder="टूल का नाम खोजें (उदा. PDF, Photo, पंचांग)...">
+            <input type="text" id="toolSearch" class="search-input" placeholder="ટૂલ શોધો (જેમ કે PDF, Photo, BG, પંચાંગ)...">
         </div>
 
-        <!-- Filter Pills -->
+        <!-- Category Filters -->
         <div class="filter-tabs">
-            <button class="filter-btn active" onclick="filterCategory('all', this)">सभी टूल्स</button>
-            <button class="filter-btn" onclick="filterCategory('pdf', this)">PDF टूल्स</button>
-            <button class="filter-btn" onclick="filterCategory('image', this)">फोटो टूल्स</button>
-            <button class="filter-btn" onclick="filterCategory('daily', this)">दैनिक सेवाएँ</button>
+            <button class="filter-btn active" onclick="filterCategory('all', this)">બધા ટૂલ્સ (All)</button>
+            <button class="filter-btn" onclick="filterCategory('pdf', this)">PDF ટૂલ્સ</button>
+            <button class="filter-btn" onclick="filterCategory('image', this)">ફોટો ટૂલ્સ</button>
+            <button class="filter-btn" onclick="filterCategory('daily', this)">દૈનિક સેવાઓ</button>
         </div>
     </section>
 
-    <!-- Main Tools Grid -->
+    <!-- Main Content Container -->
     <main class="container">
+
+        <h2 class="section-title">🛠️ લોકપ્રિય ટૂલ્સ (Popular Tools)</h2>
+
+        <!-- Tools Grid -->
         <div class="tools-grid" id="toolsContainer">
 
             <!-- Tool 1: PDF to Word -->
-            <a href="pdf-to-word.html" class="tool-card" data-category="pdf" data-title="pdf to word converter डॉक्युमेंट">
-                <div>
-                    <div class="tool-top">
-                        <div class="tool-icon icon-blue">📄</div>
-                        <span class="tool-badge badge-popular">🔥 लोकप्रिय</span>
-                    </div>
-                    <h3 class="tool-title">PDF to Word</h3>
-                    <p class="tool-desc">अपनी PDF फ़ाइलों को आसानी से एडिटेबल Word (DOCX) फ़ॉर्मेट में कनवर्ट करें।</p>
+            <a href="pdf-to-word.html" class="tool-card" data-category="pdf" data-title="pdf to word converter document docx">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=600&q=80" alt="PDF to Word" class="card-img">
+                    <span class="card-badge badge-hot">🔥 Popular</span>
                 </div>
-                <div class="tool-action">टूल खोलें <span>→</span></div>
+                <div class="card-body">
+                    <div>
+                        <h3 class="tool-title">PDF to Word Converter</h3>
+                        <p class="tool-desc">Tamari PDF file ne easily editable Word (DOCX) format ma convert karo.</p>
+                    </div>
+                    <div class="tool-btn">
+                        <span>ઓપન કરો</span>
+                        <span>→</span>
+                    </div>
+                </div>
             </a>
 
             <!-- Tool 2: Compress PDF -->
-            <a href="compress-pdf.html" class="tool-card" data-category="pdf" data-title="compress pdf साइज कम करें कंप्रेस">
-                <div>
-                    <div class="tool-top">
-                        <div class="tool-icon icon-emerald">🗜️</div>
-                        <span class="tool-badge badge-fast">⚡ तेज़</span>
-                    </div>
-                    <h3 class="tool-title">Compress PDF</h3>
-                    <p class="tool-desc">PDF फ़ाइल का साइज़ 80% तक कम करें बिना टेक्स्ट या इमेज क्वालिटी खोए।</p>
+            <a href="compress-pdf.html" class="tool-card" data-category="pdf" data-title="compress pdf size reduce optimizer">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Compress PDF" class="card-img">
+                    <span class="card-badge badge-fast">⚡ High Speed</span>
                 </div>
-                <div class="tool-action">टूल खोलें <span>→</span></div>
+                <div class="card-body">
+                    <div>
+                        <h3 class="tool-title">Compress PDF</h3>
+                        <p class="tool-desc">PDF file ni size quality ghumavya vagar 80% sudhi nani (reduce) karo.</p>
+                    </div>
+                    <div class="tool-btn">
+                        <span>ઓપન કરો</span>
+                        <span>→</span>
+                    </div>
+                </div>
             </a>
 
             <!-- Tool 3: Photo Converter -->
-            <a href="photo-converter.html" class="tool-card" data-category="image" data-title="photo converter इमेज jpg png webp">
-                <div>
-                    <div class="tool-top">
-                        <div class="tool-icon icon-purple">🖼️</div>
-                        <span class="tool-badge badge-fast">⚡ आसान</span>
-                    </div>
-                    <h3 class="tool-title">Photo Converter</h3>
-                    <p class="tool-desc">तस्वीरों को JPG, PNG, WEBP और अन्य फ़ॉर्मेट्स में आसानी से बदलें।</p>
+            <a href="photo-converter.html" class="tool-card" data-category="image" data-title="photo converter image jpg png webp resize">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=600&q=80" alt="Photo Converter" class="card-img">
+                    <span class="card-badge badge-fast">🖼️ Easy Edit</span>
                 </div>
-                <div class="tool-action">टूल खोलें <span>→</span></div>
+                <div class="card-body">
+                    <div>
+                        <h3 class="tool-title">Photo Converter</h3>
+                        <p class="tool-desc">Images ne JPG, PNG, WEBP ane anya formats ma fast convert karo.</p>
+                    </div>
+                    <div class="tool-btn">
+                        <span>ઓપન કરો</span>
+                        <span>→</span>
+                    </div>
+                </div>
             </a>
 
             <!-- Tool 4: Background Remover -->
-            <a href="bg-remover.html" class="tool-card" data-category="image" data-title="background remover बैकग्राउंड हटाएं bg">
-                <div>
-                    <div class="tool-top">
-                        <div class="tool-icon icon-orange">✂️</div>
-                        <span class="tool-badge badge-new">AI Tool</span>
-                    </div>
-                    <h3 class="tool-title">Background Remover</h3>
-                    <p class="tool-desc">किसी भी फ़ोटो का बैकग्राउंड सिर्फ़ एक क्लिक में पारदर्शी (Transparent) बनाएं।</p>
+            <a href="bg-remover.html" class="tool-card" data-category="image" data-title="background remover ai bg cut photo">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80" alt="Background Remover" class="card-img">
+                    <span class="card-badge badge-ai">🤖 AI Powered</span>
                 </div>
-                <div class="tool-action">टूल खोलें <span>→</span></div>
+                <div class="card-body">
+                    <div>
+                        <h3 class="tool-title">Background Remover</h3>
+                        <p class="tool-desc">Koi pan photono background fakt 1 click ma transparent (paradarshak) banavo.</p>
+                    </div>
+                    <div class="tool-btn">
+                        <span>ઓપન કરો</span>
+                        <span>→</span>
+                    </div>
+                </div>
             </a>
 
             <!-- Tool 5: Aaj Ka Panchang (Featured) -->
-            <a href="https://rameshsaraswat21.github.io/aaj-ka-panchang/" target="_blank" class="tool-card card-featured" data-category="daily" data-title="आज का पंचांग चौघड़िया shubh muhurat panchang tithi">
-                <div>
-                    <div class="tool-top">
-                        <div class="tool-icon icon-gold">🪔</div>
-                        <span class="tool-badge badge-new" style="background:#fef3c7; color:#92400e;">दैनिक वैदिक</span>
-                    </div>
-                    <h3 class="tool-title">आज का पंचांग व चौघड़िया</h3>
-                    <p class="tool-desc">सटीक दैनिक तिथि, नक्षत्र, राहुकाल, शुभ मुहूर्त और दिन-रात का चौघड़िया देखें।</p>
+            <a href="https://rameshsaraswat21.github.io/aaj-ka-panchang/" target="_blank" class="tool-card card-panchang" data-category="daily" data-title="आज का पंचांग चौघड़िया वैदिक panchang tithi muhurat">
+                <div class="card-img-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Ganesha_Painting.jpg/640px-Ganesha_Painting.jpg" alt="आज का पंचांग" class="card-img">
+                    <span class="card-badge badge-gold">🪔 દૈનિક વૈદિક</span>
                 </div>
-                <div class="tool-action" style="color:#b45309;">पंचांग देखें <span>→</span></div>
+                <div class="card-body">
+                    <div>
+                        <h3 class="tool-title">आज का पंचांग व चौघड़िया</h3>
+                        <p class="tool-desc">Satīk tithi, nakshatra, shubh muhurat, rahukaal ane divas-raat nu choghadiya juo.</p>
+                    </div>
+                    <div class="tool-btn">
+                        <span>પંચાંગ જુઓ</span>
+                        <span>→</span>
+                    </div>
+                </div>
             </a>
 
         </div>
+
+        <!-- ================= EXCLUSIVE AFFILIATE DEALS SECTION ================= -->
+        <section class="affiliate-section">
+            <h2 class="section-title">🎁 તમારા માટે બેસ્ટ ઑફર્સ (Top Deals For You)</h2>
+            <div class="deals-grid">
+
+                <!-- Amazon Deals Card -->
+                <a href="https://www.amazon.in?&linkCode=ll2&tag=wwwfbcomrsara-21&linkId=efa3d0ad5b2442686141f8e5f09d4cc2&ref_=as_li_ss_tl" 
+                   target="_blank" rel="noopener nofollow sponsored" class="deal-card deal-amazon">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=700&q=80" alt="Amazon Deals" class="deal-banner-img">
+                    <div class="deal-content">
+                        <div>
+                            <span class="deal-tag tag-amz">Amazon Mega Offers</span>
+                            <h3 class="deal-title">🛍️ Amazon Today's Deals & Shopping</h3>
+                            <p class="deal-desc">Electronics, Mobile, Pooja Samagri, Fashion ane Daily Home Products par bhari discount melvo.</p>
+                        </div>
+                        <span class="deal-btn btn-amz">Amazon પર Best Deals જુઓ 🛒</span>
+                    </div>
+                </a>
+
+                <!-- CashKaro Card -->
+                <a href="https://cashkaro.com?r=455319&fname=Ramesh" 
+                   target="_blank" rel="noopener nofollow sponsored" class="deal-card deal-cashkaro">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=700&q=80" alt="CashKaro Offers" class="deal-banner-img">
+                    <div class="deal-content">
+                        <div>
+                            <span class="deal-tag tag-ck">Extra Cashback</span>
+                            <h3 class="deal-title">💰 Shopping Par Extra Real Cashback</h3>
+                            <p class="deal-desc">Amazon, Flipkart par kharidari karo ane direct bank account ma transfer thai tevu real cashback melvo.</p>
+                        </div>
+                        <span class="deal-btn btn-ck">CashKaro પર Free Join કરો 🎁</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
     </main>
 
-    <!-- Trust Badges -->
+    <!-- Trust Features Banner -->
     <section class="trust-section">
         <div class="trust-grid">
             <div class="trust-item">
                 <div class="trust-icon">🔒</div>
-                <h4>100% सुरक्षित और निजी</h4>
-                <p>आपकी फ़ाइलें सुरक्षित रहती हैं और प्रोसेसिंग के बाद स्वतः हट जाती हैं।</p>
+                <h4>100% સુરક્ષિત અને પ્રાઇવેટ</h4>
+                <p>Tamari files cloud par process thaya pachhi automatic delete thai jaay chhe.</p>
             </div>
             <div class="trust-item">
                 <div class="trust-icon">⚡</div>
-                <h4>सुपरफास्ट प्रोसेसिंग</h4>
-                <p>क्लाउड स्पीड पर तुरंत रिजल्ट, बिना किसी इंतज़ार या विज्ञापन रुकावट के।</p>
+                <h4>સુપરફાસ્ટ સ્પીડ</h4>
+                <p>Bina koi waiting time turant result melvo ultra-fast processing thi.</p>
             </div>
             <div class="trust-item">
                 <div class="trust-icon">🎁</div>
-                <h4>पूरी तरह निःशुल्क</h4>
-                <p>कोई सदस्यता या छिपा शुल्क नहीं। सभी टूल्स हमेशा के लिए मुफ़्त हैं।</p>
+                <h4>હંમેશા માટે ફ્રી</h4>
+                <p>Koi subscription ke hidden fee nathi, badha tools life-time free chhe.</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 <strong>All In One Tools</strong>. सर्वाधिकार सुरक्षित।</p>
+        <p>© 2026 <strong>All In One Tools</strong>. All rights reserved.</p>
+        <p style="margin-top:6px; font-size:0.8rem; color:#64748b;">Fastest Free Online Converter & Daily Utility Portal</p>
     </footer>
 
-    <!-- Interactive Search & Filtering Script -->
+    <!-- Interactive Search Script -->
     <script>
         const searchInput = document.getElementById('toolSearch');
         const cards = document.querySelectorAll('.tool-card');
         let currentCategory = 'all';
 
-        // सर्च इनपुट फ़िल्टर
         searchInput.addEventListener('input', function(e) {
             const query = e.target.value.toLowerCase().trim();
             filterTools(query, currentCategory);
         });
 
-        // श्रेणी फ़िल्टर
         function filterCategory(cat, btn) {
             currentCategory = cat;
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
