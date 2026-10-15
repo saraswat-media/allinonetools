@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Converter - Convert JPG to PNG, WebP Online Free</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <header class="bg-purple-600 text-white shadow-md">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left text-sm"></i> AllInOneTools
+            </a>
+            <span class="text-sm font-semibold bg-purple-700 px-3 py-1 rounded-full">Photo Converter</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-extrabold text-gray-900">Photo Format Converter</h1>
+            <p class="text-gray-600 mt-1">अपनी फोटो को PNG, JPG, WebP फॉर्मेट में तुरंत और मुफ्त में कन्वर्ट करें</p>
+        </div>
+
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200">
+            <div id="dropZone" class="border-2 border-dashed border-purple-400 bg-purple-50/50 rounded-xl p-8 text-center cursor-pointer hover:bg-purple-50 transition">
+                <i class="fa-solid fa-images text-4xl text-purple-500 mb-3"></i>
+                <p class="font-semibold text-gray-700">फोटो चुनें (JPG, PNG, WebP)</p>
+                <input type="file" id="fileInput" accept="image/*" class="hidden">
+            </div>
+
+            <div id="controls" class="hidden mt-6 space-y-4">
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <span id="fileName" class="text-sm font-medium text-gray-700 truncate"></span>
+                    <span id="fileSize" class="text-xs text-gray-500"></span>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">कन्वर्ट करने के लिए फॉर्मेट चुनें:</label>
+                    <select id="targetFormat" class="w-full border rounded-lg p-2.5 text-sm outline-none">
+                        <option value="image/jpeg">JPG / JPEG Format</option>
+                        <option value="image/png">PNG Format (पारदर्शी बैकग्राउंड सपोर्ट)</option>
+                        <option value="image/webp">WebP Format (हाई स्पीड व हल्का साइज)</option>
+                    </select>
+                </div>
+
+                <button id="convertBtn" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow transition">
+                    <i class="fa-solid fa-download mr-1"></i> कन्वर्ट करें और डाउनलोड करें
+                </button>
+            </div>
+        </div>
+
+        <!-- In-Tool Amazon Banner -->
+        <div class="mt-8 p-4 bg-purple-50 border border-purple-200 rounded-xl flex items-center justify-between">
+            <div>
+                <p class="text-xs text-purple-700 font-bold uppercase tracking-wider">Storage Deal</p>
+                <p class="text-sm font-semibold text-gray-800">High-Speed Memory Cards & External Hard Drives</p>
+            </div>
+            <a href="https://www.amazon.in/s?k=external+hard+disk&tag=wwwfbcomrsara-21" target="_blank" rel="nofollow sponsored" 
+               class="bg-purple-600 text-white text-xs font-bold px-4 py-2 rounded-md hover:bg-purple-700 transition">
+                Check Deals
+            </a>
+        </div>
+    </main>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const controls = document.getElementById('controls');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const targetFormat = document.getElementById('targetFormat');
+        const convertBtn = document.getElementById('convertBtn');
+
+        let loadedImg = new Image();
+
+        dropZone.onclick = () => fileInput.click();
+
+        fileInput.onchange = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            fileName.innerText = file.name;
+            fileSize.innerText = (file.size / 1024).toFixed(1) + ' KB';
+
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                loadedImg.onload = () => controls.classList.remove('hidden');
+                loadedImg.src = ev.target.result;
+            };
+            reader.readAsDataURL(file);
+        };
+
+        convertBtn.onclick = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = loadedImg.width;
+            canvas.height = loadedImg.height;
+            const ctx = canvas.getContext('2d');
+
+            if (targetFormat.value === 'image/jpeg') {
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            ctx.drawImage(loadedImg, 0, 0);
+
+            const format = targetFormat.value;
+            const ext = format === 'image/jpeg' ? 'jpg' : (format === 'image/png' ? 'png' : 'webp');
+            const dataUrl = canvas.toDataURL(format, 0.92);
+
+            const link = document.createElement('a');
+            link.download = `converted_photo.${ext}`;
+            link.href = dataUrl;
+            link.click();
+        };
+    </script>
+</body>
+</html>
