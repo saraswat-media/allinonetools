@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Word Online - Convert PDF to Doc Free</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <header class="bg-blue-600 text-white shadow-md">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left text-sm"></i> AllInOneTools
+            </a>
+            <span class="text-sm font-semibold bg-blue-700 px-3 py-1 rounded-full">PDF to Word</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-extrabold text-gray-900">PDF to Word Converter</h1>
+            <p class="text-gray-600 mt-1">अपनी PDF फाइल से टेक्स्ट निकालकर उसे एडिटेबल Word (.doc) में कन्वर्ट करें</p>
+        </div>
+
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200">
+            <div id="dropZone" class="border-2 border-dashed border-blue-400 bg-blue-50/50 rounded-xl p-8 text-center cursor-pointer hover:bg-blue-50 transition">
+                <i class="fa-solid fa-file-word text-4xl text-blue-500 mb-3"></i>
+                <p class="font-semibold text-gray-700">अपनी PDF फाइल चुनें</p>
+                <input type="file" id="fileInput" accept="application/pdf" class="hidden">
+            </div>
+
+            <div id="statusBox" class="hidden mt-6 text-center">
+                <p id="statusText" class="text-sm text-gray-600 mb-4"></p>
+                <button id="downloadWordBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow transition">
+                    <i class="fa-solid fa-download mr-1"></i> Word File Download करें
+                </button>
+            </div>
+        </div>
+
+        <!-- In-Tool Amazon Banner -->
+        <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-between">
+            <div>
+                <p class="text-xs text-blue-700 font-bold uppercase tracking-wider">Office Gear</p>
+                <p class="text-sm font-semibold text-gray-800">Wireless Keyboard & Mouse Combos for Office Work</p>
+            </div>
+            <a href="https://www.amazon.in/s?k=wireless+keyboard+and+mouse&tag=wwwfbcomrsara-21" target="_blank" rel="nofollow sponsored" 
+               class="bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-md hover:bg-blue-700 transition">
+                Shop on Amazon
+            </a>
+        </div>
+    </main>
+
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const statusBox = document.getElementById('statusBox');
+        const statusText = document.getElementById('statusText');
+        const downloadWordBtn = document.getElementById('downloadWordBtn');
+
+        let extractedDocContent = '';
+
+        dropZone.onclick = () => fileInput.click();
+
+        fileInput.onchange = async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            statusBox.classList.remove('hidden');
+            downloadWordBtn.classList.add('hidden');
+            statusText.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> PDF से टेक्स्ट प्रोसेस हो रहा है...';
+
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+            let fullHtml = `<html><head><meta charset="utf-8"></head><body style="font-family:Arial; line-height:1.6;">`;
+
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const textContent = await page.getTextContent();
+                const pageText = textContent.items.map(item => item.str).join(' ');
+                fullHtml += `<h3>--- Page ${i} ---</h3><p>${pageText}</p><br>`;
+            }
+
+            fullHtml += `</body></html>`;
+            extractedDocContent = fullHtml;
+
+            statusText.innerText = `सफलतापूर्वक प्रोसेस हो गया! कुल ${pdf.numPages} पेज निकाले गए।`;
+            downloadWordBtn.classList.remove('hidden');
+        };
+
+        downloadWordBtn.onclick = () => {
+            const blob = new Blob(['\ufeff', extractedDocContent], {
+                type: 'application/msword'
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Converted_Document.doc';
+            a.click();
+        };
+    </script>
+</body>
+</html>
