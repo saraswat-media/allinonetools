@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://saraswat-media.github.io/aaj-ka-panchang/sitemap.xml
+Sitemap: https://saraswat-media.github.io/allinonetools/sitemap.xml
